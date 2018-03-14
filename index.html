@@ -1,0 +1,54 @@
+<!-- 
+    2. 使用js在 header 实现一个 position:sticky 效果
+ -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>demo</title>
+     <style>
+         html,
+         body{
+             margin: 0;
+             padding: 0;
+             height: 4000px;
+         }
+         .header{
+             position: relative;
+             top: 150px;
+             width: 100%;
+             background: #FF0;
+             padding: 25px 0;
+         }
+         .sticky{
+             position: fixed;
+             top: 0;
+         }
+     </style>
+ </head>
+ <body>
+     <header class="header">小波</header>
+
+     <script>
+         var header = document.querySelector('.header')
+         var offsetY = header.offsetTop
+         function onScroll(e){
+             var scrollY = window.scrollY
+             console.log(scrollY)
+             if(scrollY >= offsetY){
+                 header.classList.add('sticky')
+             }else{
+                 header.classList.remove('sticky')
+             }
+         }
+         document.addEventListener('scroll', onScroll)
+     </script>
+    <!-- 
+        我不太清楚sticky是怎么做的，但英文翻译好像是粘贴，固定的意思，不知道我这个效果有没有做对
+        也需要考虑一些兼容问题，我记得在移动端上面，position：fixed会和虚拟键盘产生影响，固定在虚拟键盘的上面
+     -->
+ </body>
+ </html>
